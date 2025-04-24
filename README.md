@@ -96,7 +96,7 @@ new_posted_df.to_sql(
 
 ## Database Schema (SQL)
 
-Below is the script used to create the tables in SQL Server:
+Below is the script used to create the tables in SQL Server([`schema/create_tabels.sql`](schema/create_tabels.sql)).:
 
 ```sql
 -- PostedNews Table
