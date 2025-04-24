@@ -21,7 +21,7 @@ The project demonstrates:
 
 
 ## ETL Pipeline Steps
-The main ETL logic is implemented in ([`src/tosql.py`](src/tosql.py).)
+The main ETL logic is implemented in ([`src/to_sql.py`](src/to_sql.py).)
 
 To run the script, execute:
 ```bash
