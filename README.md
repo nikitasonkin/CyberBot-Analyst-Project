@@ -49,18 +49,37 @@ new_posted_df.to_sql(
 )
 ```
 ### Database Structure
-```TABLE
-Column | Type | Description
-title | NVARCHAR(500) | News title
-url | NVARCHAR(1000) | Article URL
-text_hash | NVARCHAR(64) PK | Hash of the article summary
-summary | NVARCHAR(MAX) | Summarized text
-source | NVARCHAR(200) | News source/domain
-published_date | DATE | Publication date
-published_time | TIME | Publication time
-rss_source | NVARCHAR(100) | Country/source of RSS
-keywords | NVARCHAR(MAX) | Comma-separated keywords
-```
+
+#### PostedNews
+
+| Column          | Type            | Description                |
+|-----------------|-----------------|----------------------------|
+| title           | NVARCHAR(500)   | News title                 |
+| url             | NVARCHAR(1000)  | Article URL                |
+| text_hash       | NVARCHAR(64) PK | Hash of the article summary|
+| summary         | NVARCHAR(MAX)   | Summarized text            |
+| source          | NVARCHAR(200)   | News source/domain         |
+| published_date  | DATE            | Publication date           |
+| published_time  | TIME            | Publication time           |
+| rss_source      | NVARCHAR(100)   | Country/source of RSS      |
+| keywords        | NVARCHAR(MAX)   | Comma-separated keywords   |
+
+#### SkippedNews
+
+| Column          | Type            | Description                        |
+|-----------------|-----------------|------------------------------------|
+| title           | NVARCHAR(500)   | News title                         |
+| url             | NVARCHAR(1000)  | Article URL                        |
+| text_hash       | NVARCHAR(64) PK | Hash of the article summary        |
+| summary         | NVARCHAR(MAX)   | Summarized text                    |
+| source          | NVARCHAR(200)   | News source/domain                 |
+| published_date  | DATE            | Publication date                   |
+| published_time  | TIME            | Publication time                   |
+| rss_source      | NVARCHAR(100)   | Country/source of RSS              |
+| reason          | NVARCHAR(300)   | Reason skipped (e.g., duplicate)   |
+| fail_count      | INT             | Number of failed attempts          |
+| date            | DATE            | Last processed date                |
+
 
 ### Example: Database Validation
 ## Below is a sample screenshot from SSMS, showing loaded records in PostedNews:<br>
@@ -71,7 +90,7 @@ keywords | NVARCHAR(MAX) | Comma-separated keywords
 
 ## Database Schema (SQL)
 
-Below is the script used to create the tables in SQL Server (also available at [`schema/יצירת טבלאות ב SQL.sql`](schema/יצירת טבלאות ב SQL.sql)):
+Below is the script used to create the tables in SQL Server:
 
 ```sql
 -- PostedNews Table
