@@ -131,5 +131,5 @@ CREATE TABLE SkippedNews (
 
 
 ### Author
-Created by Nikita Sonkin
-Project repository: [CyberNewsBot](https://github.com/nikitasonkin/CyberNewsBot) on GitHub
+`1Created by Nikita Sonkin`
+`1Project repository: [CyberNewsBot](https://github.com/nikitasonkin/CyberNewsBot) on GitHub`
