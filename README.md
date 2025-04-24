@@ -1,22 +1,22 @@
 # Cyber NewsBot – Automated News Pipeline
 
 ## Overview
-`Cyber NewsBot` is a Python-based system that **retrieves, filters, summarizes, and loads cyber news articles** into an MS SQL Server database, fully automated and ready for professional data analysis.
+`Cyber NewsBot` is a Python-based ETL system that **retrieves, filters, summarizes, and loads cyber news articles** into an MS SQL Server database, ready for professional data analysis.
 
 The project demonstrates:
 - Advanced use of Python (`pandas`, `sqlalchemy`)
-- Working with real-world news data in JSON format
-- Loading and managing data in **SQL Server** (SSMS)
-- Clean, modular ETL design ready for expansion
+- Automated ETL best practices
+- Professional handling of news data (JSON → SQL)
+- Modular, production-ready code for scaling/automation
 
 
 ## Features
-- 🔎 Automated news retrieval from multiple sources (RSS, Google Alerts)
-- 🧹 Duplicate filtering by title, URL, and summary hash (`text_hash`)
-- ✂️ Smart summarization and keyword extraction
-- 💾 Data is loaded into **two normalized SQL tables**: `PostedNews` (published) and `SkippedNews` (filtered/skipped)
-- 🕵️‍♂️ Supports incremental loads (no duplicate keys), fully repeatable
-- 📅 Designed for weekly/automated scheduled updates
+- 🔎 **Automated news retrieval** from RSS/Google Alerts
+- 🧹 **Duplicate filtering** (title, URL, `text_hash`)
+- ✂️ **Smart summarization** & keyword extraction
+- 💾 **Normalized SQL Server storage** (`PostedNews`, `SkippedNews`)
+- ♻️ **Incremental load** (no duplicate keys)
+- ⏲️ **Ready for scheduled automation (Task Scheduler, Airflow, etc.)**
 
 
 
@@ -132,4 +132,4 @@ CREATE TABLE SkippedNews (
 
 ### Author
 Created by Nikita Sonkin
-Project repository: CyberNewsBot on GitHub
+Project repository: [CyberNewsBot](https://github.com/nikitasonkin/CyberNewsBot) on GitHub
