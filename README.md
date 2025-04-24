@@ -54,7 +54,7 @@ new_posted_df.to_sql(
     chunksize=1000
 )
 ```
-### Database Structure
+## Database Structure
 
 #### PostedNews
 
@@ -87,11 +87,11 @@ new_posted_df.to_sql(
 | date            | DATE            | Last processed date                |
 
 
-### Example: Database Validation
+## Example: Database Validation
 ## Below is a sample screenshot from SSMS, showing loaded records in PostedNews:<br>
 ![image](https://github.com/user-attachments/assets/1fbe28fb-39f6-4c42-b626-121832c24b31)
 
-## And a sample screenshot of SkippedNews:<br>
+### And a sample screenshot of SkippedNews:<br>
 ![image](https://github.com/user-attachments/assets/a238d7f5-b847-4638-9f94-3e0dbd2f588d)
 
 ## Database Schema (SQL)
@@ -130,10 +130,10 @@ CREATE TABLE SkippedNews (
 
 
 ### Future Improvements
-`-Automate ETL run using Task Scheduler / Airflow`
-` -Add EDA & visualization (matplotlib, seaborn)`
-` -Build a simple dashboard/report`
-` -Add automatic logging and email summary`
+-Automate ETL run using Task Scheduler / Airflow
+-Add EDA & visualization (matplotlib, seaborn)
+-Build a simple dashboard/report
+-Add automatic logging and email summary
 
 
 ### Author
