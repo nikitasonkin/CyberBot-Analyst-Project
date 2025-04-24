@@ -101,7 +101,7 @@ CREATE TABLE SkippedNews (
     fail_count INT              NOT NULL,
     date DATE                   NOT NULL
 );
-
+```
 
 
 ### Future Improvements
