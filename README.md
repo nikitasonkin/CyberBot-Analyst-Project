@@ -21,6 +21,12 @@ The project demonstrates:
 
 
 ## ETL Pipeline Steps
+The main ETL logic is implemented in [`src/to_sql.py`](src/to_sql.py).
+
+To run the script, execute:
+```bash
+python src/to_sql.py
+```
 
 ### 1. **Extract** – Collect news data from multiple JSON files
 ```python
