@@ -50,7 +50,7 @@ new_posted_df.to_sql(
 )
 ```
 ### Database Structure
-
+```TABLE
 Column | Type | Description
 title | NVARCHAR(500) | News title
 url | NVARCHAR(1000) | Article URL
@@ -61,7 +61,7 @@ published_date | DATE | Publication date
 published_time | TIME | Publication time
 rss_source | NVARCHAR(100) | Country/source of RSS
 keywords | NVARCHAR(MAX) | Comma-separated keywords
-
+```
 
 
 
