@@ -124,12 +124,13 @@ CREATE TABLE SkippedNews (
 
 
 ### Future Improvements
- `-Automate ETL run using Task Scheduler / Airflow`
+`-Automate ETL run using Task Scheduler / Airflow`
 ` -Add EDA & visualization (matplotlib, seaborn)`
 ` -Build a simple dashboard/report`
 ` -Add automatic logging and email summary`
 
 
 ### Author
--1Created by Nikita Sonkin
+-Created by Nikita Sonkin.
+
 -Project repository: [CyberNewsBot](https://github.com/nikitasonkin/CyberNewsBot) on GitHub
