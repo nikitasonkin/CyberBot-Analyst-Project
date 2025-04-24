@@ -63,5 +63,10 @@ rss_source | NVARCHAR(100) | Country/source of RSS
 keywords | NVARCHAR(MAX) | Comma-separated keywords
 ```
 
+### Example: Database Validation
+## Below is a sample screenshot from SSMS, showing loaded records in PostedNews:<br>
+![image](https://github.com/user-attachments/assets/1fbe28fb-39f6-4c42-b626-121832c24b31)
 
+## And a sample screenshot of SkippedNews:<br>
+![image](https://github.com/user-attachments/assets/a238d7f5-b847-4638-9f94-3e0dbd2f588d)
 
