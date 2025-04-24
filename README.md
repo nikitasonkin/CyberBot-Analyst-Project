@@ -30,11 +30,38 @@ posted_df = pd.read_json('posted_news_ud.json')
 skipped_df = pd.read_json('skipped_news_ud.json')
 ```
 
-## Transform – Filter out already-loaded records, clean and format data
-```bash
+### 2.Transform – Filter out already-loaded records, clean and format data
+```python
 # Convert keywords to comma-separated string
 posted_df['keywords'] = posted_df['keywords'].apply(lambda x: ','.join(x) if isinstance(x, list) else str(x))
 
 # Remove records with duplicate text_hash
 new_posted_df = posted_df[~posted_df['text_hash'].isin(existing_posted_hashes)].drop_duplicates(subset=['text_hash'])
 ```
+
+### 3. Load – Insert into SQL Server tables using SQLAlchemy
+```python
+new_posted_df.to_sql(
+    "PostedNews",
+    con=engine,
+    if_exists="append",
+    index=False,
+    chunksize=1000
+)
+```
+### Database Structure
+
+Column | Type | Description
+title | NVARCHAR(500) | News title
+url | NVARCHAR(1000) | Article URL
+text_hash | NVARCHAR(64) PK | Hash of the article summary
+summary | NVARCHAR(MAX) | Summarized text
+source | NVARCHAR(200) | News source/domain
+published_date | DATE | Publication date
+published_time | TIME | Publication time
+rss_source | NVARCHAR(100) | Country/source of RSS
+keywords | NVARCHAR(MAX) | Comma-separated keywords
+
+
+
+
