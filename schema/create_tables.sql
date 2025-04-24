@@ -7,7 +7,7 @@ CREATE TABLE PostedNews (
     published_date DATE         NOT NULL,
     published_time TIME         NOT NULL,
     rss_source NVARCHAR(100)    NOT NULL,
-    keywords NVARCHAR(MAX)      NULL  -- רשאי להיות ריק/חסר
+    keywords NVARCHAR(MAX)      NULL  -- ֳ¸ֳ¹ֳ ֳ© ֳ¬ֳ₪ֳ©ֳ¥ֳ÷ ֳ¸ֳ©ֳ·/ֳ§ֳ±ֳ¸
 );
 
 
@@ -20,7 +20,7 @@ CREATE TABLE SkippedNews (
     published_date DATE         NOT NULL,
     published_time TIME         NOT NULL,
     rss_source NVARCHAR(100)    NOT NULL,
-    reason NVARCHAR(300)        NULL,      -- לפעמים עשוי להיות ריק
+    reason NVARCHAR(300)        NULL,      -- ֳ¬ֳ´ֳ²ֳ®ֳ©ֳ­ ֳ²ֳ¹ֳ¥ֳ© ֳ¬ֳ₪ֳ©ֳ¥ֳ÷ ֳ¸ֳ©ֳ·
     fail_count INT              NOT NULL,
     date DATE                   NOT NULL
 );
