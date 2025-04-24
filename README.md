@@ -70,3 +70,14 @@ keywords | NVARCHAR(MAX) | Comma-separated keywords
 ## And a sample screenshot of SkippedNews:<br>
 ![image](https://github.com/user-attachments/assets/a238d7f5-b847-4638-9f94-3e0dbd2f588d)
 
+
+### Future Improvements
+ `-Automate ETL run using Task Scheduler / Airflow`
+` -Add EDA & visualization (matplotlib, seaborn)`
+` -Build a simple dashboard/report`
+` -Add automatic logging and email summary`
+
+
+### Author
+Created by Nikita Sonkin
+Project repository: CyberNewsBot on GitHub
