@@ -7,7 +7,7 @@ CREATE TABLE PostedNews (
     published_date DATE         NOT NULL,
     published_time TIME         NOT NULL,
     rss_source NVARCHAR(100)    NOT NULL,
-    keywords NVARCHAR(MAX)      NULL  -- øùàé ìäéåú øé÷/çñø
+    keywords NVARCHAR(MAX)      NULL  -- 
 );
 
 
@@ -20,7 +20,7 @@ CREATE TABLE SkippedNews (
     published_date DATE         NOT NULL,
     published_time TIME         NOT NULL,
     rss_source NVARCHAR(100)    NOT NULL,
-    reason NVARCHAR(300)        NULL,      -- ìôòîéí òùåé ìäéåú øé÷
+    reason NVARCHAR(300)        NULL,     
     fail_count INT              NOT NULL,
     date DATE                   NOT NULL
 );
