@@ -1,5 +1,5 @@
 # ===========================================================================================
-# 🔹 1. Imports and Configuration
+# 🔹Step 1. Imports and Configuration
 # ===========================================================================================
 #  Data handling and analysis
 import pandas as pd                            # ניתוח ועיבוד טבלאות נתונים
@@ -20,12 +20,12 @@ from sqlalchemy import create_engine          # חיבור ושמירה למסד
 import networkx as nx                         # עבודה עם גרפים, מציאת רכיבים מחוברים
 
 # ===========================================================================================
-# 🔹 2. loading data
+# 🔹Step 2. loading data
 # ===========================================================================================
 # הגדרות חיבור ל-SQL
-server = 'NIKITA-PC'
-database = 'CyberNewsBot'
-driver = 'ODBC Driver 17 for SQL Server'
+server = ''
+database = ''
+driver = ''
 
 connection_string = f"mssql+pyodbc://@{server}/{database}?driver={driver.replace(' ', '+')}&Trusted_Connection=yes"
 engine = create_engine(connection_string)
@@ -38,7 +38,7 @@ skipped_df = pd.read_sql("SELECT * FROM SkippedNews", con=engine)
 posted_df['ID'] = posted_df.index
 skipped_df['ID'] = skipped_df.index
 # ===========================================================================================
-# 🔹 3. Initial review
+# 🔹Step 3. Initial review
 # ===========================================================================================
 print("============================================ סקירה ראשונית ===============================================")
 
@@ -71,7 +71,7 @@ print("\n פילוח כתבות לפי תאריך:")
 print(skipped_df['published_date'].value_counts().sort_index())
 
 # ===========================================================================================
-#  🔹4. Date conversion + auxiliary columns
+#  🔹Step 4. Date conversion + auxiliary columns
 # ===========================================================================================
 print("============================================ המרת תאריכים + עמודות עזר ===============================================")
 
@@ -92,7 +92,7 @@ skipped_df['hour'] = pd.to_datetime(skipped_df['published_time'], errors='coerce
 print(" המרת תאריכים והוספת עמודות עזר הושלמה.")
 
 # ===========================================================================================
-# 🔹 5. Statistical groupings and basic graphs
+# 🔹Step 5. Statistical groupings and basic graphs
 # ===========================================================================================
 print("============================================ קיבוצים סטטיסטיים וגרפים בסיסיים ===============================================")
 
@@ -209,7 +209,7 @@ plt.ylabel('Published Date')
 plt.tight_layout()
 plt.show()
 
-# 🟢 סיום שלב גרפים סטטיסטיים
+#  סיום שלב גרפים סטטיסטיים
 print(" גרפים סטטיסטיים בסיסיים נוצרו בהצלחה.")
 
 # ===========================================================================================
@@ -523,12 +523,12 @@ articles_df.to_sql('Articles', con=engine, index=False, if_exists='replace')
 trends_df.to_sql('Trends', con=engine, index=False, if_exists='replace')
 
 print(f"\n✅ Topics saved: {len(topics_df)}")
-print(f"✅ Articles saved: {len(articles_df)}")
-print(f"✅ Trends saved: {len(trends_df)}")
+print(f"\n✅ Articles saved: {len(articles_df)}")
+print(f"\n✅ Trends saved: {len(trends_df)}")
 
 
 # ===========================================================================================
-# 🔹 10. Business visualization of trends
+# 🔹 Step 10. Business visualization of trends
 # ===========================================================================================
 print("============================================ ויזואליזציה עסקית של טרנדים ===============================================")
 
