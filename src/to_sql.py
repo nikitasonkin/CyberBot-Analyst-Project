@@ -1,10 +1,11 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import json
+import pyodbc
 
-server = 'NIKITA-PC'
-database = 'CyberNewsBot'
-driver = 'ODBC Driver 17 for SQL Server'
+server = ''
+database = ''
+driver = ''
 
 connection_string = (
     f"mssql+pyodbc://@{server}/{database}"
@@ -16,7 +17,7 @@ engine = create_engine(connection_string)
 # --- POSTED_NEWS -----------------------------------------------------
 
 
-posted_df = pd.read_json(r"C:\Users\Nikita\pythonProject\ALONSHAHAKCYBERBOT\posted_news_ud.json")
+posted_df = pd.read_json(r"posted_news_ud.json")
 if 'keywords' in posted_df.columns:
     posted_df['keywords'] = posted_df['keywords'].apply(
         lambda x: ','.join(x) if isinstance(x, list) else str(x)
@@ -33,16 +34,12 @@ if not new_posted_df.empty:
         index=False,
         chunksize=1000
     )
-    print(f"✅ נטענו {len(new_posted_df)} כתבות חדשות ל-PostedNews.")
+    print(f"✅ Loaded {len(new_posted_df)} new articles to PostedNews.")
 else:
-    print("אין כתבות חדשות לטעינה ב-PostedNews.")
-
-# --- SKIPPED_NEWS ---------------------------------------------------------------------
+    print("No additional articles for PostedNews.")
 
 
-# --- SKIPPED_NEWS ---
-
-with open(r"C:\Users\Nikita\pythonProject\ALONSHAHAKCYBERBOT\skipped_news_ud.json", encoding='utf-8') as f:
+with open(r"skipped_news_ud.json", encoding='utf-8') as f:
     skipped_dict = json.load(f)
 skipped_values = list(skipped_dict.values())
 skipped_df = pd.DataFrame(skipped_values)
@@ -50,7 +47,7 @@ skipped_df = pd.DataFrame(skipped_values)
 existing_skipped = pd.read_sql("SELECT text_hash FROM SkippedNews", con=engine)
 existing_skipped_hashes = set(existing_skipped['text_hash'])
 
-# סינון כפול – גם מול ה-DB וגם בתוך ה-DataFrame עצמו
+
 new_skipped_df = skipped_df[~skipped_df['text_hash'].isin(existing_skipped_hashes)]
 new_skipped_df = new_skipped_df.drop_duplicates(subset=['text_hash'])
 
@@ -62,10 +59,16 @@ if not new_skipped_df.empty:
         index=False,
         chunksize=1000
     )
-    print(f"✅ נטענו {len(new_skipped_df)} רשומות חדשות ל-SkippedNews.")
+    print(f"✅ loaded {len(new_skipped_df)} new articles to SkippedNews.")
 else:
-    print("אין רשומות חדשות לטעינה ב-SkippedNews.")
+    print("No additional articles for SkippedNews.")
 
+
+# בדיקות
+print("\n--- Check DataFrame SkippedNews ---")
+print(new_skipped_df.dtypes)
+print(new_skipped_df.isnull().sum())
+print(new_skipped_df.head(2))
 
 # בדיקות
 print("\n--- בדיקת DataFrame SkippedNews ---")
