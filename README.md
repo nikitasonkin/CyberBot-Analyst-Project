@@ -1,10 +1,7 @@
 # Project Overview
-Analysis of data from the Cyber News Bot.
+Analysis of data from the Cyber News Bot [CyberNewsBot on GitHub](https://github.com/nikitasonkin/CyberNewsBot).
 This repository contains Jupyter Notebooks that demonstrate how to process and analyze data efficiently. Below is a summary and explanation of each file in the repository.
 
-## Author
-- **Created by:** Nikita Sonkin  
-- **Project repository:** [CyberNewsBot on GitHub](https://github.com/nikitasonkin/CyberNewsBot)
 
 ### 📄 File: `Notebook: 01-datatosql.ipynb`
 
@@ -208,3 +205,7 @@ This Jupyter Notebook represents the core analytical and AI-driven operations fo
 ---
 
 This notebook combines robust data processing, advanced machine learning, and intuitive visualizations to deliver actionable insights into the performance and content of articles processed by the Cyber News Bot. It leverages state-of-the-art embedding techniques, cosine similarity analysis, and clustering to uncover hidden patterns and relationships within the data while maintaining seamless integration with SQL for efficient data management.
+
+## Author
+- **Created by:** Nikita Sonkin  
+- **Project repository:** [CyberNewsBot on GitHub](https://github.com/nikitasonkin/CyberNewsBot)
