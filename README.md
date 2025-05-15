@@ -54,31 +54,31 @@ new_posted_df.to_sql(
     chunksize=1000
 )
 ```
-Notebook: 01-datatosql.ipynb
-This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like pandas and SQLAlchemy. The notebook is designed to process data from the Cyber News Bot and perform the following tasks:
+### Notebook: 01-datatosql.ipynb
+**This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like pandas and SQLAlchemy. The notebook is designed to process data from the Cyber News Bot and perform the following tasks:**
 
-Key Features:
-Database Connection Setup:
+***Key Features:***
+****Database Connection Setup:****
 
-Configures a connection to SQL Server using SQLAlchemy with ODBC Driver 17.
-Ensures secure and efficient data transfer to the database.
-Loading PostedNews JSON Data:
+-Configures a connection to SQL Server using SQLAlchemy with ODBC Driver 17.
+-Ensures secure and efficient data transfer to the database.
+-Loading PostedNews JSON Data:
 
-Reads JSON files containing posted news articles (posted_news_ud.json).
-Converts the keywords column into a string format.
-Checks for duplicates in the database using the text_hash column.
-Loads only new articles into the PostedNews table.
-Loading SkippedNews JSON Data:
+-Reads JSON files containing posted news articles (posted_news_ud.json).
+-Converts the keywords column into a string format.
+-Checks for duplicates in the database using the text_hash column.
+-Loads only new articles into the PostedNews table.
+-Loading SkippedNews JSON Data:
 
-Reads skipped articles from skipped_news_ud.json.
-Identifies and skips duplicate articles using the text_hash column.
-Populates the SkippedNews table with unique entries.
-Data Quality Checks:
+-Reads skipped articles from skipped_news_ud.json.
+-Identifies and skips duplicate articles using the text_hash column.
+-Populates the SkippedNews table with unique entries.
+-Data Quality Checks:
 
-Displays examples of skipped articles for review.
-Performs a missing value check to ensure data integrity in the SkippedNews table.
-Outputs:
-Successfully loaded articles are printed with summary messages:
+-Displays examples of skipped articles for review.
+-Performs a missing value check to ensure data integrity in the SkippedNews table.
+-Outputs:
+-Successfully loaded articles are printed with summary messages:
 ✅ Number of new articles loaded into PostedNews.
 Number of new articles added to SkippedNews.
 Logs any skipped or duplicate entries detected during the process.
