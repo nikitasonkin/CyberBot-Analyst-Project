@@ -1,100 +1,43 @@
-# Cyber NewsBot – Automated News Pipeline
+# Project Overview
+Analysis of data from the Cyber News Bot.
+This repository contains Jupyter Notebooks that demonstrate how to process and analyze data efficiently. Below is a summary and explanation of each file in the repository.
 
-## Overview
-`Cyber NewsBot` is a Python-based ETL system that **retrieves, filters, summarizes, and loads cyber news articles** into an MS SQL Server database, ready for professional data analysis.
+### 📄 File: Notebook: 01-datatosql.ipynb
+This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like pandas and SQLAlchemy. It is designed to process data from the Cyber News Bot and perform the following tasks:
 
-The project demonstrates:
-- Advanced use of Python (`pandas`, `sqlalchemy`)
-- Automated ETL best practices
-- Professional handling of news data (JSON → SQL)
-- Modular, production-ready code for scaling/automation
-
-
-## Features
-- 🔎 **Automated news retrieval** from RSS/Google Alerts
-- 🧹 **Duplicate filtering** (title, URL, `text_hash`)
-- ✂️ **Smart summarization** & keyword extraction
-- 💾 **Normalized SQL Server storage** (`PostedNews`, `SkippedNews`)
-- ♻️ **Incremental load** (no duplicate keys)
-- ⏲️ **Ready for scheduled automation (Task Scheduler, Airflow, etc.)**
-
-
-
-## ETL Pipeline Steps
-The main ETL logic is implemented in ([`src/to_sql.py`](src/to_sql.py).)
-
-To run the script, execute:
-```bash
-python src/to_sql.py
-```
-
-### 1. **Extract** – Collect news data from multiple JSON files
-```python
-import pandas as pd
-posted_df = pd.read_json('posted_news_ud.json')
-skipped_df = pd.read_json('skipped_news_ud.json')
-```
-
-### 2.Transform – Filter out already-loaded records, clean and format data
-```python
-# Convert keywords to comma-separated string
-posted_df['keywords'] = posted_df['keywords'].apply(lambda x: ','.join(x) if isinstance(x, list) else str(x))
-
-# Remove records with duplicate text_hash
-new_posted_df = posted_df[~posted_df['text_hash'].isin(existing_posted_hashes)].drop_duplicates(subset=['text_hash'])
-```
-
-### 3. Load – Insert into SQL Server tables using SQLAlchemy
-```python
-new_posted_df.to_sql(
-    "PostedNews",
-    con=engine,
-    if_exists="append",
-    index=False,
-    chunksize=1000
-)
-```
-#### 📄 File: `Notebook: 01-datatosql.ipynb
-**This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like pandas and SQLAlchemy. The notebook is designed to process data from the Cyber News Bot and perform the following tasks:**
-
-***Key Features:***
-****Database Connection Setup:****
-
--Configures a connection to SQL Server using SQLAlchemy with ODBC Driver 17.
--Ensures secure and efficient data transfer to the database.
--Loading PostedNews JSON Data:
-
--Reads JSON files containing posted news articles (posted_news_ud.json).
--Converts the keywords column into a string format.
--Checks for duplicates in the database using the text_hash column.
--Loads only new articles into the PostedNews table.
--Loading SkippedNews JSON Data:
-
--Reads skipped articles from skipped_news_ud.json.
--Identifies and skips duplicate articles using the text_hash column.
--Populates the SkippedNews table with unique entries.
--Data Quality Checks:
-
--Displays examples of skipped articles for review.
--Performs a missing value check to ensure data integrity in the SkippedNews table.
--Outputs:
--Successfully loaded articles are printed with summary messages:
+🔑 Key Features
+1️⃣ Database Connection Setup
+Configures a connection to SQL Server using SQLAlchemy with ODBC Driver 17.
+Ensures secure and efficient data transfer to the database.
+2️⃣ Loading PostedNews JSON Data
+📂 Reads JSON files containing posted news articles (posted_news_ud.json).
+🔄 Converts the keywords column into a string format.
+🔍 Checks for duplicates in the database using the text_hash column.
+✅ Loads only new articles into the PostedNews table.
+3️⃣ Loading SkippedNews JSON Data
+📂 Reads skipped articles from skipped_news_ud.json.
+🔍 Identifies and skips duplicate articles using the text_hash column.
+✅ Populates the SkippedNews table with unique entries.
+4️⃣ Data Quality Checks
+👁️ Displays examples of skipped articles for review.
+🧐 Performs a missing value check to ensure data integrity in the SkippedNews table.
+📊 Outputs
+Successfully loaded articles are printed with summary messages:
 ✅ Number of new articles loaded into PostedNews.
-Number of new articles added to SkippedNews.
-Logs any skipped or duplicate entries detected during the process.
-Dependencies:
-Python libraries: pandas, SQLAlchemy, pyodbc, json.
-A running SQL Server instance with tables PostedNews and SkippedNews predefined.
-Usage:
+✅ Number of new articles added to SkippedNews.
+🗒️ Logs any skipped or duplicate entries detected during the process.
+📦 Dependencies
+🐍 Python Libraries: pandas, SQLAlchemy, pyodbc, json.
+🛠️ A running SQL Server instance with tables PostedNews and SkippedNews predefined.
+⚙️ Usage
 To run the notebook, ensure that:
 
-The JSON files (posted_news_ud.json, skipped_news_ud.json) are placed in the working directory.
-The SQL Server connection settings (e.g., server, database, driver) are correctly configured.
-All required Python packages are installed.
+📁 The JSON files (posted_news_ud.json, skipped_news_ud.json) are placed in the working directory.
+⚙️ The SQL Server connection settings (e.g., server, database, driver) are correctly configured.
+✅ All required Python packages are installed.
 
-### Main Analysis Notebook
 
-#### 📄 File: `notebooks/Main_Analysis_Fina.ipynb`
+### 📄 File: `notebooks/Main_Analysis_Fina.ipynb`
 
 This Jupyter Notebook represents the core analytical and AI-driven operations for processing and deriving insights from the data collected by the Cyber News Bot. The notebook is designed to perform comprehensive data cleaning, analysis, and visualization while also leveraging machine learning and natural language processing (NLP) techniques to extract deeper insights.
 
@@ -247,13 +190,6 @@ This Jupyter Notebook represents the core analytical and AI-driven operations fo
 ---
 
 This notebook combines robust data processing, advanced machine learning, and intuitive visualizations to deliver actionable insights into the performance and content of articles processed by the Cyber News Bot. It leverages state-of-the-art embedding techniques, cosine similarity analysis, and clustering to uncover hidden patterns and relationships within the data while maintaining seamless integration with SQL for efficient data management.
-
-### Future Improvements
--Automate ETL run using Task Scheduler / Airflow
--Add EDA & visualization (matplotlib, seaborn)
--Build a simple dashboard/report
--Add automatic logging and email summary
-
 
 ### Author
 -Created by Nikita Sonkin.
