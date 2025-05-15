@@ -33,10 +33,14 @@ This Jupyter Notebook demonstrates how to load JSON data into a SQL Server datab
 ---
 
 ## 📊 Outputs
-- Successfully loaded articles are printed with summary messages:
-  - **Number of new articles loaded into `PostedNews`.**
-  - **Number of new articles added to `SkippedNews`.**
-- Logs any skipped or duplicate entries detected during the process.
+
+- **Successfully loaded articles**:  
+  - Displays summary messages with the following details:
+    - **Number of new articles loaded into `PostedNews`:** ✅ 2335.
+    - **Number of new articles added to `SkippedNews`:** 1514.
+
+- **Logging**:  
+  - Logs any skipped or duplicate entries detected during the process.
 
 ---
 
