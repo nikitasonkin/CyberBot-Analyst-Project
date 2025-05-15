@@ -2,40 +2,54 @@
 Analysis of data from the Cyber News Bot.
 This repository contains Jupyter Notebooks that demonstrate how to process and analyze data efficiently. Below is a summary and explanation of each file in the repository.
 
-### 📄 File: Notebook: 01-datatosql.ipynb
-This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like pandas and SQLAlchemy. It is designed to process data from the Cyber News Bot and perform the following tasks:
+### 📄 File: `Notebook: 01-datatosql.ipynb`
 
-🔑 Key Features
-1️⃣ Database Connection Setup
-Configures a connection to SQL Server using SQLAlchemy with ODBC Driver 17.
-Ensures secure and efficient data transfer to the database.
-2️⃣ Loading PostedNews JSON Data
-📂 Reads JSON files containing posted news articles (posted_news_ud.json).
-🔄 Converts the keywords column into a string format.
-🔍 Checks for duplicates in the database using the text_hash column.
-✅ Loads only new articles into the PostedNews table.
-3️⃣ Loading SkippedNews JSON Data
-📂 Reads skipped articles from skipped_news_ud.json.
-🔍 Identifies and skips duplicate articles using the text_hash column.
-✅ Populates the SkippedNews table with unique entries.
-4️⃣ Data Quality Checks
-👁️ Displays examples of skipped articles for review.
-🧐 Performs a missing value check to ensure data integrity in the SkippedNews table.
-📊 Outputs
-Successfully loaded articles are printed with summary messages:
-✅ Number of new articles loaded into PostedNews.
-✅ Number of new articles added to SkippedNews.
-🗒️ Logs any skipped or duplicate entries detected during the process.
-📦 Dependencies
-🐍 Python Libraries: pandas, SQLAlchemy, pyodbc, json.
-🛠️ A running SQL Server instance with tables PostedNews and SkippedNews predefined.
-⚙️ Usage
+This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like `pandas` and `SQLAlchemy`. It is designed to process data from the Cyber News Bot and perform the following tasks:
+
+---
+
+## 🔑 Key Features
+
+### 1️⃣ Database Connection Setup
+- Configures a connection to SQL Server using SQLAlchemy with ODBC Driver 17.
+- Ensures secure and efficient data transfer to the database.
+
+### 2️⃣ Loading `PostedNews` JSON Data
+- Reads JSON files containing posted news articles (`posted_news_ud.json`).
+- Converts the `keywords` column into a string format.
+- Checks for duplicates in the database using the `text_hash` column.
+- Loads only new articles into the `PostedNews` table.
+
+### 3️⃣ Loading `SkippedNews` JSON Data
+- Reads skipped articles from `skipped_news_ud.json`.
+- Identifies and skips duplicate articles using the `text_hash` column.
+- Populates the `SkippedNews` table with unique entries.
+
+### 4️⃣ Data Quality Checks
+- Displays examples of skipped articles for review.
+- Performs a missing value check to ensure data integrity in the `SkippedNews` table.
+
+---
+
+## 📊 Outputs
+- Successfully loaded articles are printed with summary messages:
+  - **Number of new articles loaded into `PostedNews`.**
+  - **Number of new articles added to `SkippedNews`.**
+- Logs any skipped or duplicate entries detected during the process.
+
+---
+
+## 📦 Dependencies
+- **Python Libraries**: `pandas`, `SQLAlchemy`, `pyodbc`, `json`.
+- A running **SQL Server instance** with tables `PostedNews` and `SkippedNews` predefined.
+
+---
+
+## ⚙️ Usage
 To run the notebook, ensure that:
-
-📁 The JSON files (posted_news_ud.json, skipped_news_ud.json) are placed in the working directory.
-⚙️ The SQL Server connection settings (e.g., server, database, driver) are correctly configured.
-✅ All required Python packages are installed.
-
+1. **The JSON files (`posted_news_ud.json`, `skipped_news_ud.json`) are placed in the working directory.**
+2. **The SQL Server connection settings (e.g., `server`, `database`, `driver`) are correctly configured.**
+3. **All required Python packages are installed.**
 
 ### 📄 File: `notebooks/Main_Analysis_Fina.ipynb`
 
