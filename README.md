@@ -54,79 +54,44 @@ new_posted_df.to_sql(
     chunksize=1000
 )
 ```
-## Database Structure
+Notebook: 01-datatosql.ipynb
+This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like pandas and SQLAlchemy. The notebook is designed to process data from the Cyber News Bot and perform the following tasks:
 
-#### PostedNews
+Key Features:
+Database Connection Setup:
 
-| Column          | Type            | Description                |
-|-----------------|-----------------|----------------------------|
-| title           | NVARCHAR(500)   | News title                 |
-| url             | NVARCHAR(1000)  | Article URL                |
-| text_hash       | NVARCHAR(64) PK | Hash of the article summary|
-| summary         | NVARCHAR(MAX)   | Summarized text            |
-| source          | NVARCHAR(200)   | News source/domain         |
-| published_date  | DATE            | Publication date           |
-| published_time  | TIME            | Publication time           |
-| rss_source      | NVARCHAR(100)   | Country/source of RSS      |
-| keywords        | NVARCHAR(MAX)   | Comma-separated keywords   |
+Configures a connection to SQL Server using SQLAlchemy with ODBC Driver 17.
+Ensures secure and efficient data transfer to the database.
+Loading PostedNews JSON Data:
 
-#### SkippedNews
+Reads JSON files containing posted news articles (posted_news_ud.json).
+Converts the keywords column into a string format.
+Checks for duplicates in the database using the text_hash column.
+Loads only new articles into the PostedNews table.
+Loading SkippedNews JSON Data:
 
-| Column          | Type            | Description                        |
-|-----------------|-----------------|------------------------------------|
-| title           | NVARCHAR(500)   | News title                         |
-| url             | NVARCHAR(1000)  | Article URL                        |
-| text_hash       | NVARCHAR(64) PK | Hash of the article summary        |
-| summary         | NVARCHAR(MAX)   | Summarized text                    |
-| source          | NVARCHAR(200)   | News source/domain                 |
-| published_date  | DATE            | Publication date                   |
-| published_time  | TIME            | Publication time                   |
-| rss_source      | NVARCHAR(100)   | Country/source of RSS              |
-| reason          | NVARCHAR(300)   | Reason skipped (e.g., duplicate)   |
-| fail_count      | INT             | Number of failed attempts          |
-| date            | DATE            | Last processed date                |
+Reads skipped articles from skipped_news_ud.json.
+Identifies and skips duplicate articles using the text_hash column.
+Populates the SkippedNews table with unique entries.
+Data Quality Checks:
 
+Displays examples of skipped articles for review.
+Performs a missing value check to ensure data integrity in the SkippedNews table.
+Outputs:
+Successfully loaded articles are printed with summary messages:
+✅ Number of new articles loaded into PostedNews.
+Number of new articles added to SkippedNews.
+Logs any skipped or duplicate entries detected during the process.
+Dependencies:
+Python libraries: pandas, SQLAlchemy, pyodbc, json.
+A running SQL Server instance with tables PostedNews and SkippedNews predefined.
+Usage:
+To run the notebook, ensure that:
 
-## Example: Database Validation
-## Below is a sample screenshot from SSMS, showing loaded records in PostedNews:<br>
-![image](https://github.com/user-attachments/assets/1fbe28fb-39f6-4c42-b626-121832c24b31)
+The JSON files (posted_news_ud.json, skipped_news_ud.json) are placed in the working directory.
+The SQL Server connection settings (e.g., server, database, driver) are correctly configured.
+All required Python packages are installed.
 
-### And a sample screenshot of SkippedNews:<br>
-![image](https://github.com/user-attachments/assets/a238d7f5-b847-4638-9f94-3e0dbd2f588d)
-
-## Database Schema (SQL)
-
-Below is the script used to create the tables in SQL Server([`schema/create_tables.sql`](schema/create_tables.sql)).:
-
-```sql
--- PostedNews Table
-CREATE TABLE PostedNews (
-    title NVARCHAR(500)         NOT NULL,
-    url NVARCHAR(1000)          NOT NULL,
-    text_hash NVARCHAR(64)      NOT NULL PRIMARY KEY,
-    summary NVARCHAR(MAX)       NOT NULL,
-    source NVARCHAR(200)        NOT NULL,
-    published_date DATE         NOT NULL,
-    published_time TIME         NOT NULL,
-    rss_source NVARCHAR(100)    NOT NULL,
-    keywords NVARCHAR(MAX)      NULL
-);
-
--- SkippedNews Table
-CREATE TABLE SkippedNews (
-    title NVARCHAR(500)         NOT NULL,
-    url NVARCHAR(1000)          NOT NULL,
-    text_hash NVARCHAR(64)      NOT NULL PRIMARY KEY,
-    summary NVARCHAR(MAX)       NOT NULL,
-    source NVARCHAR(200)        NOT NULL,
-    published_date DATE         NOT NULL,
-    published_time TIME         NOT NULL,
-    rss_source NVARCHAR(100)    NOT NULL,
-    reason NVARCHAR(300)        NULL,
-    fail_count INT              NOT NULL,
-    date DATE                   NOT NULL
-);
-```
 ### Main Analysis Notebook
 
 #### 📄 File: `notebooks/Main_Analysis_Fina.ipynb`
