@@ -54,7 +54,7 @@ new_posted_df.to_sql(
     chunksize=1000
 )
 ```
-### Notebook: 01-datatosql.ipynb
+#### 📄 File: `Notebook: 01-datatosql.ipynb
 **This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like pandas and SQLAlchemy. The notebook is designed to process data from the Cyber News Bot and perform the following tasks:**
 
 ***Key Features:***
