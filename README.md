@@ -3,19 +3,51 @@ Analysis of data from the [CyberNewsBot](https://github.com/nikitasonkin/CyberNe
 This repository contains SQL file that creates dedicated tables and Jupyter Notebooks that demonstrate how to process and analyze data efficiently. Below is a summary and explanation of each file in the repository.
 
 
-### 📄 File: `Notebook/01-datatosql.ipynb`
+#### SQL Schema
+
+This repository includes a SQL schema designed for managing news articles and analyzing trends. Below is a summary of the tables defined in the schema:
+
+1. **PostedNews**:
+   - Stores all successfully posted news articles along with metadata for trend analysis and duplication filtering.
+   - Data is imported from the `datatosql.ipynb` file.
+   - Key fields include `title`, `url`, `text_hash` (unique), `summary`, `source`, `published_date`, `published_time`, and `keywords`.
+
+2. **SkippedNews**:
+   - Logs all news articles that failed to post, along with the reason for failure and failure count for diagnostics and quality control.
+   - Data is imported from the `datatosql.ipynb` file.
+   - Key fields include `title`, `url`, `text_hash` (unique), `summary`, `source`, `published_date`, `reason`, and `fail_count`.
+
+3. **Topics**:
+   - Contains all topics, regardless of whether they are considered trends.
+   - Built from connected components in a graph of similar articles.
+   - Serves as the core structure for topic-level insights and trend classification.
+   - Key fields include `short_title`, `trend_type`, `num_articles`, `first_date`, `main_country`, and `top_keywords`.
+
+4. **Articles**:
+   - Includes articles grouped into topics (clusters), excluding those not similar to any others.
+   - Enables trend analysis at the article level.
+   - Key fields include `title`, `summary`, `url`, `published_date`, `cleaned_keywords`, and `topic_id` (foreign key referencing `Topics`).
+
+5. **Trends**:
+   - Represents the most important topics for visualization and decision-making.
+   - Used in dashboards and summary reports, ideal for Power BI integration.
+   - Key fields include `short_title`, `trend_type`, `num_articles`, `main_country`, `top_keywords`, and `representative_summary`.
+
+Each table is carefully structured to support comprehensive trend analysis and facilitate data-driven insights.
+
+#### 📄 File: `Notebook/01-datatosql.ipynb`
 
 This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like `pandas` and `SQLAlchemy`. It is designed to process data from the Cyber News Bot and perform the following tasks:
 
 ---
 
-## 🔑 Key Features
+#### 🔑 Key Features
 
-### 1️⃣ Database Connection Setup
+#### 1️⃣ Database Connection Setup
 - Configures a connection to SQL Server using SQLAlchemy with ODBC Driver 17.
 - Ensures secure and efficient data transfer to the database.
 
-### 2️⃣ Loading `PostedNews` JSON Data
+#### 2️⃣ Loading `PostedNews` JSON Data
 - Reads JSON files containing posted news articles (`posted_news_ud.json`).
 - Converts the `keywords` column into a string format.
 - Checks for duplicates in the database using the `text_hash` column.
@@ -26,13 +58,13 @@ This Jupyter Notebook demonstrates how to load JSON data into a SQL Server datab
 - Identifies and skips duplicate articles using the `text_hash` column.
 - Populates the `SkippedNews` table with unique entries.
 
-### 4️⃣ Data Quality Checks
+#### 4️⃣ Data Quality Checks
 - Displays examples of skipped articles for review.
 - Performs a missing value check to ensure data integrity in the `SkippedNews` table.
 
 ---
 
-## 📊 Outputs
+#### 📊 Outputs
 
 - **Successfully loaded articles**:  
   - Displays summary messages with the following details:
@@ -44,19 +76,19 @@ This Jupyter Notebook demonstrates how to load JSON data into a SQL Server datab
 
 ---
 
-## 📦 Dependencies
+#### 📦 Dependencies
 - **Python Libraries**: `pandas`, `SQLAlchemy`, `pyodbc`, `json`.
 - A running **SQL Server instance** with tables `PostedNews` and `SkippedNews` predefined.
 
 ---
 
-## ⚙️ Usage
+#### ⚙️ Usage
 To run the notebook, ensure that:
 1. **The JSON files (`posted_news_ud.json`, `skipped_news_ud.json`) are placed in the working directory.**
 2. **The SQL Server connection settings (e.g., `server`, `database`, `driver`) are correctly configured.**
 3. **All required Python packages are installed.**
 
-### 📄 File: `notebooks/Main_Analysis_Fina.ipynb`
+#### 📄 File: `notebooks/Main_Analysis_Fina.ipynb`
 
 This Jupyter Notebook represents the core analytical and AI-driven operations for processing and deriving insights from the data collected by the Cyber News Bot. The notebook is designed to perform comprehensive data cleaning, analysis, and visualization while also leveraging machine learning and natural language processing (NLP) techniques to extract deeper insights.
 
@@ -210,7 +242,7 @@ This Jupyter Notebook represents the core analytical and AI-driven operations fo
 
 This notebook combines robust data processing, advanced machine learning, and intuitive visualizations to deliver actionable insights into the performance and content of articles processed by the Cyber News Bot. It leverages state-of-the-art embedding techniques, cosine similarity analysis, and clustering to uncover hidden patterns and relationships within the data while maintaining seamless integration with SQL for efficient data management.
 
-### 📂JSON Files: DATA/`posted_news_ud.json` & DATA/`skipped_news_ud.json`
+#### 📂JSON Files: DATA/`posted_news_ud.json` & DATA/`skipped_news_ud.json`
 
 These files are automatically generated and updated by the **CyberNewsBot** system. They serve as the raw data sources for all analysis and trend detection processes.
 
@@ -244,7 +276,7 @@ Each skipped entry includes all base fields from `posted_news_ud.json`, plus:
 
 ---
 
-### 🧠 Usage in Notebooks
+#### 🧠 Usage in Notebooks
 
 - **NOTEBOOK/`datatosql.ipynb`**  
   This notebook is responsible for **loading the JSON data into SQL Server tables**. It:
@@ -262,6 +294,6 @@ Each skipped entry includes all base fields from `posted_news_ud.json`, plus:
 These files are the foundation for identifying patterns in cyber-related news and tracking emerging threats over time.
 
 
-## Author
+### Author
 - **Created by:** Nikita Sonkin  
 - **Project repository:** [CyberNewsBot on GitHub](https://github.com/nikitasonkin/CyberNewsBot)
