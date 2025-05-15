@@ -3,7 +3,7 @@ Analysis of data from the [CyberNewsBot](https://github.com/nikitasonkin/CyberNe
 This repository contains SQL file that creates dedicated tables and Jupyter Notebooks that demonstrate how to process and analyze data efficiently. Below is a summary and explanation of each file in the repository.
 
 
-### 📄 File: `Notebook: 01-datatosql.ipynb`
+### 📄 File: `Notebook/01-datatosql.ipynb`
 
 This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like `pandas` and `SQLAlchemy`. It is designed to process data from the Cyber News Bot and perform the following tasks:
 
@@ -209,6 +209,58 @@ This Jupyter Notebook represents the core analytical and AI-driven operations fo
 ---
 
 This notebook combines robust data processing, advanced machine learning, and intuitive visualizations to deliver actionable insights into the performance and content of articles processed by the Cyber News Bot. It leverages state-of-the-art embedding techniques, cosine similarity analysis, and clustering to uncover hidden patterns and relationships within the data while maintaining seamless integration with SQL for efficient data management.
+
+### 📂JSON Files: DATA/`posted_news_ud.json` & DATA/`skipped_news_ud.json`
+
+These files are automatically generated and updated by the **CyberNewsBot** system. They serve as the raw data sources for all analysis and trend detection processes.
+
+---
+
+#### ✅ `posted_news_ud.json`
+
+Contains all cybersecurity news articles that were successfully published and sent by the bot.  
+Each article includes the following fields:
+
+- `title` – the article's title  
+- `url` – direct link to the article  
+- `summary` – short summary of the content  
+- `source` – publication source (e.g., website name)  
+- `published_date` – date of publication (YYYY-MM-DD)  
+- `published_time` – time of publication (HH:MM:SS)  
+- `rss_source` – geographic source (country/channel)  
+- `keywords` – extracted keywords from the content  
+- `text_hash` – unique identifier for duplicate detection  
+
+---
+
+#### ⚠️ `skipped_news_ud.json`
+
+Stores all articles that were **rejected** during processing due to filters or errors.  
+Each skipped entry includes all base fields from `posted_news_ud.json`, plus:
+
+- `reason` – explanation for rejection (e.g., duplicate title, short summary)  
+- `fail_count` – how many times the article was skipped  
+- `date` – timestamp when the rejection was logged  
+
+---
+
+### 🧠 Usage in Notebooks
+
+- **NOTEBOOK/`datatosql.ipynb`**  
+  This notebook is responsible for **loading the JSON data into SQL Server tables**. It:
+  - Parses and cleans the data from both JSON files
+  - Filters out previously inserted records using `text_hash`
+  - Inserts new articles into `PostedNews` and `SkippedNews` SQL tables
+
+- **NOTEBOOK/`Main_Analysis_Final.ipynb`**  
+  This notebook performs **in-depth analysis and trend extraction**. It:
+  - Loads the `posted_news_ud.json` and `skipped_news_ud.json` files for processing
+  - Cleans and enriches the data (keywords, time-based features, etc.)
+  - Detects duplicates, clusters similar articles into `Topics`, and flags trends (`Trends`)
+  - Saves final results to structured SQL tables: `Topics`, `Articles`, and `Trends`
+
+These files are the foundation for identifying patterns in cyber-related news and tracking emerging threats over time.
+
 
 ## Author
 - **Created by:** Nikita Sonkin  
