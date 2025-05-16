@@ -90,6 +90,9 @@ To run the notebook, ensure that:
 2. **The SQL Server connection settings (e.g., `server`, `database`, `driver`) are correctly configured.**
 3. **All required Python packages are installed.**
 
+---
+
+
 #### 📄 File: `notebooks/Main_Analysis_Fina.ipynb`
 
 This Jupyter Notebook represents the core analytical and AI-driven operations for processing and deriving insights from the data collected by the Cyber News Bot. The notebook is designed to perform comprehensive data cleaning, analysis, and visualization while also leveraging machine learning and natural language processing (NLP) techniques to extract deeper insights.
@@ -243,6 +246,8 @@ This Jupyter Notebook represents the core analytical and AI-driven operations fo
 ---
 
 This notebook combines robust data processing, advanced machine learning, and intuitive visualizations to deliver actionable insights into the performance and content of articles processed by the Cyber News Bot. It leverages state-of-the-art embedding techniques, cosine similarity analysis, and clustering to uncover hidden patterns and relationships within the data while maintaining seamless integration with SQL for efficient data management.
+
+---
 
 #### 📂JSON Files: DATA/`posted_news_ud.json` & DATA/`skipped_news_ud.json`
 
