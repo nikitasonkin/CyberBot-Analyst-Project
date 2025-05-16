@@ -35,6 +35,8 @@ This repository includes a SQL schema designed for managing news articles and an
 
 Each table is carefully structured to support comprehensive trend analysis and facilitate data-driven insights.
 
+---
+
 #### 📄 File: `Notebook/01-datatosql.ipynb`
 
 This Jupyter Notebook demonstrates how to load JSON data into a SQL Server database using Python libraries like `pandas` and `SQLAlchemy`. It is designed to process data from the Cyber News Bot and perform the following tasks:
