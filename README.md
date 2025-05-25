@@ -4,7 +4,7 @@ This repository contains SQL schema that creates dedicated tables and Jupyter No
 
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [SQL Schema](#create_new_tables.sql)
+- [create_new_tables.sql](#create_new_tables.sql)
 - [Analysis Notebook](#analysis-notebook)
 - [Key Sections](#key-sections)
 - [Outputs](#outputs)
