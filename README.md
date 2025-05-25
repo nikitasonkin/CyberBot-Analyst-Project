@@ -5,7 +5,7 @@ This repository contains SQL schema that creates dedicated tables and Jupyter No
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [create_new_tables.sql](#create_new_tables)
-- [Analysis Notebook](#analysis-notebook)
+- [DataAnalystCyberProject Notebook](#analysis-notebook)
 - [Key Sections](#key-sections)
 - [Outputs](#outputs)
 - [JSON Files](#json-files)
@@ -67,10 +67,12 @@ This repository defines five core tables for storing and analyzing news articles
 
 ---
 
+<a name="analysis-notebook"></a>
 #### 📄 File: [`DataAnalystCyberProject.ipynb`](https://github.com/nikitasonkin/Data-Analyst-Project/blob/main/notebooks/DataAnalystCyberProject.ipynb)
 
 A single, end-to-end Python script that drives the CyberNewsBot analytics pipeline—from JSON ingestion and SQL ETL, through exploratory data checks, feature engineering, semantic clustering and topic/trend extraction, to a comprehensive suite of publication-ready visualizations.
 
+<a name="analysis-notebook"></a>
 ##### 🔹 Key Sections
 
 1. **Imports & SQLAlchemy Setup**  
@@ -136,6 +138,7 @@ A single, end-to-end Python script that drives the CyberNewsBot analytics pipeli
     - WordCloud of trending keywords  
     - Horizontal bar chart with representative summaries and metadata
 
+<a name="outputs"></a>
 ##### 📊 Outputs
 
 - **Console**: ETL summaries, EDA statistics, duplicate and topic/trend counts  
@@ -143,10 +146,12 @@ A single, end-to-end Python script that drives the CyberNewsBot analytics pipeli
 
 ---
 
+<a name="json-files"></a>
 ##### 📂JSON Files: DATA/`posted_news_ud.json` & DATA/`skipped_news_ud.json`
 
 These files are automatically generated and updated by the **CyberNewsBot** system. They serve as the raw data sources for all analysis and trend detection processes.
 
+<a name="posted-news-udjson"></a>
 ##### `posted_news_ud.json`
 
 Contains all cybersecurity news articles that were successfully published and sent by the bot.  
@@ -162,7 +167,7 @@ Each article includes the following fields:
 - `keywords` – extracted keywords from the content  
 - `text_hash` – unique identifier for duplicate detection  
 
-
+<a name="skipped-news-udjson"></a>
 ##### `skipped_news_ud.json`
 
 Stores all articles that were **rejected** during processing due to filters or errors.  
