@@ -4,8 +4,8 @@ This repository contains SQL schema that creates dedicated tables and Jupyter No
 
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [create_new_tables.sql](#create-new-tables-sql)
-- [DataAnalystCyberProject](#DataAnalystCyberProject-ipynb)
+- [create_new_tables.sql](#create_new_tables)
+- [Analysis Notebook](#analysis-notebook)
 - [Key Sections](#key-sections)
 - [Outputs](#outputs)
 - [JSON Files](#json-files)
@@ -16,6 +16,7 @@ This repository contains SQL schema that creates dedicated tables and Jupyter No
 
 ---
 
+<a name="create_new_tables"></a>
 #### 📄 File: [`create_new_tables.sql`](https://github.com/nikitasonkin/Data-Analyst-Project/blob/main/sql/create_new_tables.sql)
 
 This repository defines five core tables for storing and analyzing news articles, topics and trends. Each table is carefully structured with primary keys, auto-increment IDs, appropriate data types and foreign key constraints to ensure data integrity and optimal query performance.
