@@ -222,7 +222,7 @@ Each skipped entry includes all base fields from `posted_news_ud.json`, plus:
 ---
 
 ### License
--`This project is licensed under the [MIT License](LICENSE).`
+-This project is licensed under the [MIT License](LICENSE).
 
 ### Author
 - **Created by:** Nikita Sonkin  
