@@ -70,8 +70,6 @@ This repository defines five core tables for storing and analyzing news articles
 
 A single, end-to-end Python script that drives the CyberNewsBot analytics pipeline—from JSON ingestion and SQL ETL, through exploratory data checks, feature engineering, semantic clustering and topic/trend extraction, to a comprehensive suite of publication-ready visualizations.
 
----
-
 ##### 🔹 Key Sections
 
 1. **Imports & SQLAlchemy Setup**  
@@ -137,8 +135,6 @@ A single, end-to-end Python script that drives the CyberNewsBot analytics pipeli
     - WordCloud of trending keywords  
     - Horizontal bar chart with representative summaries and metadata
 
----
-
 ##### 📊 Outputs
 
 - **Console**: ETL summaries, EDA statistics, duplicate and topic/trend counts  
@@ -149,8 +145,6 @@ A single, end-to-end Python script that drives the CyberNewsBot analytics pipeli
 ##### 📂JSON Files: DATA/`posted_news_ud.json` & DATA/`skipped_news_ud.json`
 
 These files are automatically generated and updated by the **CyberNewsBot** system. They serve as the raw data sources for all analysis and trend detection processes.
-
----
 
 ##### `posted_news_ud.json`
 
@@ -167,7 +161,6 @@ Each article includes the following fields:
 - `keywords` – extracted keywords from the content  
 - `text_hash` – unique identifier for duplicate detection  
 
----
 
 ##### `skipped_news_ud.json`
 
