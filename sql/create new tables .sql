@@ -24,7 +24,7 @@ CREATE TABLE SkippedNews (
     published_time TIME         NOT NULL,
     rss_source NVARCHAR(100)    NOT NULL,
     reason NVARCHAR(300)        NULL,
-    fail_count INT              NOT NULL,
+    fail_count INT              NOT NULL
 );
 
 CREATE TABLE Topics (
@@ -39,8 +39,8 @@ CREATE TABLE Topics (
     last_date DATE,
     main_country NVARCHAR(100),
     top_keywords NVARCHAR(MAX),
-    spike_detected BIT,
-    growth_detected BIT
+    spike_detected BIT DEFAULT 0,
+    growth_detected BIT DEFAULT 0
 );
 
 
@@ -53,8 +53,8 @@ CREATE TABLE Articles (
     published_time TIME,
     rss_source NVARCHAR(100),
     cleaned_keywords NVARCHAR(MAX),
-    topic_id INT FOREIGN KEY REFERENCES Topics(topic_id),
-    similar_count INT
+    topic_id INT ,
+    similar_count INT,
     CONSTRAINT FK_Articles_Topics FOREIGN KEY (topic_id) REFERENCES Topics(topic_id)
 );
 
@@ -71,8 +71,8 @@ CREATE TABLE Trends (
     last_date DATE,
     main_country NVARCHAR(100),
     top_keywords NVARCHAR(MAX),
-    spike_detected BIT,
-    growth_detected BIT,
+    spike_detected BIT DEFAULT 0,
+    growth_detected BIT DEFAULT 0,
     representative_summary NVARCHAR(MAX)
 );
 
