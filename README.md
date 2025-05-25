@@ -72,7 +72,7 @@ This repository defines five core tables for storing and analyzing news articles
 
 A single, end-to-end Python script that drives the CyberNewsBot analytics pipeline—from JSON ingestion and SQL ETL, through exploratory data checks, feature engineering, semantic clustering and topic/trend extraction, to a comprehensive suite of publication-ready visualizations.
 
-<a name="analysis-notebook"></a>
+<a name="key-sections"></a>
 ##### 🔹 Key Sections
 
 1. **Imports & SQLAlchemy Setup**  
@@ -178,7 +178,7 @@ Each skipped entry includes all base fields from `posted_news_ud.json`, plus:
 - `date` – timestamp when the rejection was logged  
 
 ---
-
+<a name="dependencies"></a>
 ##### Dependencies
 
 - **Standard Library**  
@@ -223,6 +223,7 @@ Each skipped entry includes all base fields from `posted_news_ud.json`, plus:
 ### License
 -This project is licensed under the [MIT License](LICENSE).
 
+<a name="author"></a>
 ### Author
 - **Created by:** Nikita Sonkin  
 - **Project repository:** [CyberNewsBot on GitHub](https://github.com/nikitasonkin/CyberNewsBot)
