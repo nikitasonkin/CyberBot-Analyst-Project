@@ -3,17 +3,16 @@ Analysis of data from the [CyberNewsBot](https://github.com/nikitasonkin/CyberNe
 This repository contains SQL schema that creates dedicated tables and Jupyter Notebooks that demonstrate how to process and analyze data efficiently. Below is a summary and explanation of each file in the repository.
 
 ## Table of Contents
-- [Project Overview](#project-overview)  
-- [SQL Schema](#sql-schema)  
-- [Analysis Notebook](#analysis-notebook)  
-- [Key Sections](#key-sections)  
-- [Outputs](#outputs)  
-- [JSON Files](#json-files)  
-  - [posted_news_ud.json](#posted_news_ud-json)  
-  - [skipped_news_ud.json](#skipped_news_ud-json)  
-- [Dependencies](#dependencies)  
-- [Author](#author)  
-
+- [Project Overview](#project-overview)
+- [SQL Schema](#sql-schema)
+- [Analysis Notebook](#analysis-notebook)
+- [Key Sections](#key-sections)
+- [Outputs](#outputs)
+- [JSON Files](#json-files)
+  - [posted_news_ud.json](#posted_news_ud-json)
+  - [skipped_news_ud.json](#skipped-news-ud-json)
+- [Dependencies](#dependencies)
+- [Author](#author)
 ---
 
 #### 📄 File: [`create_new_tables.sql`](https://github.com/nikitasonkin/Data-Analyst-Project/blob/main/sql/create_new_tables.sql)
