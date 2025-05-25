@@ -4,15 +4,16 @@ This repository contains SQL schema that creates dedicated tables and Jupyter No
 
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [SQL Schema](#File: [`create_new_tables.sql`](https://github.com/nikitasonkin/Data-Analyst-Project/blob/main/sql/create_new_tables.sql))
-- [Analysis Notebook](#analysis-notebook)
+- [create_new_tables.sql](#file-create_new_tables-sql)
+- [Analysis Notebook](#file-dataanalystcyberprojectipynb)
 - [Key Sections](#key-sections)
 - [Outputs](#outputs)
 - [JSON Files](#json-files)
-  - [posted_news_ud.json](#posted_news_ud-json)
-  - [skipped_news_ud.json](#skipped-news-ud-json)
+  - [posted_news_ud.json](#posted_news_udjson)
+  - [skipped_news_ud.json](#skipped_news_udjson)
 - [Dependencies](#dependencies)
 - [Author](#author)
+
 ---
 
 #### 📄 File: [`create_new_tables.sql`](https://github.com/nikitasonkin/Data-Analyst-Project/blob/main/sql/create_new_tables.sql)
