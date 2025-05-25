@@ -1,6 +1,6 @@
 # Project Overview
 Analysis of data from the [CyberNewsBot](https://github.com/nikitasonkin/CyberNewsBot).
-This repository contains SQL file that creates dedicated tables and Jupyter Notebooks that demonstrate how to process and analyze data efficiently. Below is a summary and explanation of each file in the repository.
+This repository contains SQL schema that creates dedicated tables and Jupyter Notebooks that demonstrate how to process and analyze data efficiently. Below is a summary and explanation of each file in the repository.
 
 ## Table of Contents
 - [Project Overview](#project-overview)  
