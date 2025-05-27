@@ -1,3 +1,4 @@
+
 CREATE TABLE PostedNews (
   ID               INT IDENTITY(1,1) PRIMARY KEY,
   title            NVARCHAR(500)    NOT NULL,
@@ -28,7 +29,7 @@ CREATE TABLE SkippedNews (
 
 
 CREATE TABLE Topics (
-  topic_id             INT IDENTITY(1,1) PRIMARY KEY,
+  topic_id             INT PRIMARY KEY,
   short_title          NVARCHAR(500)    NULL,
   trend_type           NVARCHAR(20)     NULL,
   num_articles         INT              NULL,
