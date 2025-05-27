@@ -1,4 +1,3 @@
-
 CREATE TABLE PostedNews (
   ID               INT IDENTITY(1,1) PRIMARY KEY,
   title            NVARCHAR(500)    NOT NULL,
@@ -61,22 +60,7 @@ CREATE TABLE dbo.Articles (
       REFERENCES Topics(topic_id)
 );
 
-CREATE TABLE Trends (
-    topic_id INT PRIMARY KEY FOREIGN KEY REFERENCES Topics(topic_id),
-    short_title NVARCHAR(500),
-    trend_type NVARCHAR(20),
-    num_articles INT,
-    num_days INT,
-    max_articles_per_day INT,
-    first_date DATE,
-    dominant_day DATE,
-    last_date DATE,
-    main_country NVARCHAR(100),
-    top_keywords NVARCHAR(MAX),
-    spike_detected BIT,
-    growth_detected BIT,
-    representative_summary NVARCHAR(MAX)
-);
+
 CREATE TABLE Trends (
   topic_id             INT           PRIMARY KEY,
   short_title          NVARCHAR(500) NULL,
