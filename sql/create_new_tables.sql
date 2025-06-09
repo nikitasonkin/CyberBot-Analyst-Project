@@ -81,43 +81,4 @@ CREATE TABLE Trends (
       REFERENCES Topics(topic_id)
 );
 
---יצירת טבלה DIMDATE
-CREATE TABLE DimDate (
-  Date DATE PRIMARY KEY,
-  Year INT,
-  Month INT,
-  MonthName NVARCHAR(20),
-  MonthShort NVARCHAR(3),
-  Quarter NVARCHAR(10),
-  Day INT,
-  WeekdayName NVARCHAR(20),
-  WeekdayNum INT,
-  YearMonth NVARCHAR(7)
-);
 
--- הגדרת טווח תאריכים מתוך הנתונים
-DECLARE @MinDate DATE = (SELECT MIN(published_date) FROM PostedNews);
-DECLARE @MaxDate DATE = (SELECT MAX(published_date) FROM PostedNews);
-
--- יצירת לולאה עם כל התאריכים בטווח
-WITH DateRange AS (
-    SELECT @MinDate AS DateValue
-    UNION ALL
-    SELECT DATEADD(DAY, 1, DateValue)
-    FROM DateRange
-    WHERE DateValue < @MaxDate
-)
-INSERT INTO DimDate (Date, Year, Month, MonthName, MonthShort, Quarter, Day, WeekdayName, WeekdayNum, YearMonth)
-SELECT
-    DateValue,
-    YEAR(DateValue),
-    MONTH(DateValue),
-    DATENAME(MONTH, DateValue),
-    LEFT(DATENAME(MONTH, DateValue), 3),
-    'Q' + CAST(DATEPART(QUARTER, DateValue) AS NVARCHAR),
-    DAY(DateValue),
-    DATENAME(WEEKDAY, DateValue),
-    DATEPART(WEEKDAY, DateValue),
-    FORMAT(DateValue, 'yyyy-MM')
-FROM DateRange
-OPTION (MAXRECURSION 10000);
